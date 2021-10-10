@@ -1,46 +1,41 @@
 #include <stdio.h>
 
-#define N 4
-#define M 5
+#define N 3
+#define M 4
 
 void llenaArr(int matrizNum[N][M]);
-int encuentraMenor(int a[M], int *n);
+int encuentraMenor(int a[M], int *menor);
 
 int main()
 {
     int m[N][M];
-    int a[M];
-    int i,j, n;
+    int ren, menor;
     int pos;
 
     llenaArr(m);
 
-    for(i = 0; i < N; i++)
+    for(ren = 0; ren < N; ren ++)
     {
-        for(j = 0; j < M; j++)
-        {
-            pos = encuentraMenor(a, &n);
-            printf("El numero menor en el renglon %d en la posicion %d : %d ", i, pos, n);
+            pos = encuentraMenor(m[ren], &menor);
+            printf("El numero menor en el renglon %d en la posicion %d  es : %d ", ren, pos, menor);
 
-
-        }
         printf("\n");
 
     }
 
 }
 
-int encuentraMenor(int a[M], int *n)
+int encuentraMenor(int a[M], int *menor)
 {
     int pos = -1,i;
-    *n = 100;
+    *menor = a[0];
 
-    for(i = 0; i < N; i++)
+    for(i = 0; i < M; i++)
     {
-        if(a[i] < *n )
+        if(a[i] < *menor )
         {
-            pos = i;
-            *n = a[i];
+            *menor  = a[i];
+             pos = i;
         }
 
     }
@@ -52,8 +47,6 @@ void llenaArr(int matrizNum[N][M])
     int ren, col;
     for(ren = 0; ren < N; ren++)
     {
-        /*printf("ingresa el nombre de tu renglon: ", col);
-        scanf("%d", &num[ren]);*/
 
         for(col = 0; col < M; col++)
         {
